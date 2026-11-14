@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Conditions d’utilisation · Taxpad</title>
+    <meta name="description" content="Taxpad est concédé sous le contrat de licence standard d’Apple. Le déblocage est un achat unique via l’App Store. Les résultats et les préréglages de taux sont fournis à titre informatif uniquement.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F0F0F" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns="http://www.w3.org/2000/svg"%20viewBox="0%200%2024%2024"%3E%3Crect%20width="24"%20height="24"%20rx="5.4"%20fill="%23fff"/%3E%3Crect%20x="3"%20y="4.5"%20width="18"%20height="3.6"%20rx="1.8"%20fill="%231C6E5B"/%3E%3Crect%20x="3"%20y="10.2"%20width="12"%20height="3.6"%20rx="1.8"%20fill="%23B2412F"/%3E%3Crect%20x="17"%20y="9.2"%20width="1.8"%20height="5.6"%20rx="0.9"%20fill="%23B2412F"/%3E%3Crect%20x="3"%20y="15.9"%20width="18"%20height="3.6"%20rx="1.8"%20fill="%23141414"/%3E%3C/svg%3E">
+    <link rel="canonical" href="https://starbuck-dev.github.io/Taxpad/fr/terms/">
+    <link rel="alternate" hreflang="en" href="https://starbuck-dev.github.io/Taxpad/terms/">
+    <link rel="alternate" hreflang="de" href="https://starbuck-dev.github.io/Taxpad/de/terms/">
+    <link rel="alternate" hreflang="fr" href="https://starbuck-dev.github.io/Taxpad/fr/terms/">
+    <link rel="alternate" hreflang="es" href="https://starbuck-dev.github.io/Taxpad/es/terms/">
+    <link rel="alternate" hreflang="it" href="https://starbuck-dev.github.io/Taxpad/it/terms/">
+    <link rel="alternate" hreflang="pt-BR" href="https://starbuck-dev.github.io/Taxpad/pt-br/terms/">
+    <link rel="alternate" hreflang="nl" href="https://starbuck-dev.github.io/Taxpad/nl/terms/">
+    <link rel="alternate" hreflang="pl" href="https://starbuck-dev.github.io/Taxpad/pl/terms/">
+    <link rel="alternate" hreflang="ru" href="https://starbuck-dev.github.io/Taxpad/ru/terms/">
+    <link rel="alternate" hreflang="x-default" href="https://starbuck-dev.github.io/Taxpad/terms/">
+    <style>
+:root {
+    color-scheme: light dark;
+    --bg: #FFFFFF; --card: #F5F5F2; --ink: #141414; --mute: #6E6E68; --line: #E2E2DC; --onbg: #FBF1EF;
+    --net: #1C6E5B; --tax: #B2412F; --gross: #141414; --on-tax: #FFFFFF;
+    --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0F0F0F; --card: #1B1B1B; --ink: #F2F2EE; --mute: #A5A59E; --line: #2C2C2A; --onbg: #2A1A17;
+        --net: #4DB596; --tax: #E8766A; --gross: #F2F2EE; --on-tax: #0F0F0F;
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+    margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 var(--sans);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+::selection { background: var(--onbg); color: var(--ink); }
+a { color: var(--tax); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--tax); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 640px) { .wrap { padding: 0 24px; } }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px;
+    padding-bottom: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--ink);
+    font-weight: 800; font-size: 20px; letter-spacing: -0.01em; text-decoration: none; }
+.mark { flex: none; }
+.lang { position: relative; font-size: 15px; }
+.lang summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; min-height: 44px;
+    padding: 0 14px; border-radius: 999px; background: var(--card); color: var(--ink); white-space: nowrap; }
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: ""; width: 6px; height: 6px; margin: -3px 2px 0 2px; border: solid var(--mute);
+    border-width: 0 1.6px 1.6px 0; transform: rotate(45deg); }
+.lang[open] summary::after { margin-top: 3px; transform: rotate(-135deg); }
+.lang ul { position: absolute; right: 0; z-index: 2; margin: 6px 0 0; padding: 6px; list-style: none;
+    min-width: 200px; background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(20, 20, 20, 0.14); }
+.lang li a { display: block; padding: 9px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.lang li a:hover { background: var(--card); }
+.lang li a[aria-current="page"] { color: var(--tax); font-weight: 600; }
+main { padding-bottom: 24px; }
+h1 { font-size: 34px; line-height: 1.12; font-weight: 800; letter-spacing: -0.02em; margin: 24px 0 12px;
+    text-wrap: balance; }
+h2 { font-size: 24px; line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; margin: 48px 0 12px;
+    text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; font-weight: 600; margin: 0 0 6px; }
+p { margin: 0 0 12px; }
+ul.plain { margin: 0 0 12px; padding-left: 20px; }
+p, li { color: var(--mute); }
+strong { color: var(--ink); font-weight: 600; }
+.display { font-size: 40px; line-height: 1.08; letter-spacing: -0.03em; margin-top: 40px; }
+@media (min-width: 640px) { .display { font-size: 56px; margin-top: 64px; } h1 { font-size: 40px; } }
+em { font-style: normal; color: var(--tax); }
+u { text-decoration: none; color: var(--net); }
+.lead { font-size: 19px; line-height: 1.5; color: var(--mute); max-width: 36em; }
+.date { font-size: 15px; color: var(--mute); margin: 0 0 24px; font-variant-numeric: tabular-nums; }
+.button { display: inline-flex; align-items: center; min-height: 50px; padding: 0 24px; border-radius: 12px;
+    background: var(--tax); color: var(--on-tax); font-weight: 600; text-decoration: none; }
+.button:hover { filter: brightness(1.06); }
+.store { margin: 24px 0 0; color: var(--mute); }
+.sheet { margin: 40px 0 8px; padding: 8px; border-radius: 20px; background: var(--card); }
+.chip { display: inline-block; margin: 8px 8px 12px; padding: 5px 14px; border-radius: 999px;
+    background: var(--tax); color: var(--on-tax); font-size: 15px; font-weight: 600; }
+.line { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 14px 16px 14px 20px; border-radius: 12px; }
+.line + .line { margin-top: 2px; }
+.line::before { content: ""; position: absolute; left: 8px; top: 12px; bottom: 12px; width: 3px; border-radius: 2px;
+    background: var(--role); }
+.line.net { --role: var(--net); }
+.line.tax { --role: var(--tax); background: var(--onbg); }
+.line.gross { --role: var(--gross); }
+.line .role { color: var(--role); font-weight: 600; font-size: 15px; }
+.line .num { color: var(--role); font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums; }
+.caret { display: inline-block; width: 3px; height: 0.9em; margin-left: 3px; vertical-align: -0.05em;
+    border-radius: 2px; background: var(--tax); }
+.sheet figcaption { padding: 10px 12px 4px; font-size: 15px; color: var(--mute); }
+.rows { margin: 40px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.rows li { border-bottom: 1px solid var(--line); }
+.rows a { display: flex; align-items: center; gap: 16px; min-height: 64px; padding: 14px 4px; color: var(--ink);
+    text-decoration: none; }
+.rows a:hover .chev { transform: translateX(2px); }
+.rows strong { display: block; font-size: 17px; }
+.rows span { display: block; color: var(--mute); font-size: 15px; }
+.rows .text { flex: 1; }
+.chev { flex: none; color: var(--mute); transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.contact { margin: 24px 0 8px; padding: 20px; border-radius: 16px; background: var(--card); }
+.contact p { margin-bottom: 16px; }
+.faq h3 { margin-top: 28px; }
+.faq > section + section { border-top: 1px solid var(--line); }
+.faq > section { padding-bottom: 4px; }
+.summary { margin: 0 0 8px; padding: 16px 20px; border-radius: 16px; background: var(--card); }
+.summary p { margin: 0; }
+article h2 { font-size: 20px; margin-top: 36px; }
+.rates-lead { max-width: 40em; }
+.verified { display: inline-block; margin: 4px 0 8px; padding: 6px 12px; border-radius: 8px; background: var(--card);
+    color: var(--ink); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.group { margin: 32px 0 0; }
+.group h3 { font-size: 20px; font-weight: 700; margin: 0; }
+.group .meta { margin: 2px 0 8px; font-size: 15px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; font-variant-numeric: tabular-nums; }
+th, td { padding: 9px 8px 9px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+thead th { padding-top: 0; color: var(--mute); font-size: 13px; font-weight: 600; }
+tbody th { color: var(--ink); font-weight: 500; }
+td { color: var(--mute); }
+td.total, th.total { text-align: right; padding-right: 0; white-space: nowrap; }
+td.total { color: var(--ink); font-weight: 600; }
+.nb { white-space: nowrap; }
+footer { margin-top: 40px; padding-bottom: 48px; font-size: 15px; }
+footer::before { content: ""; display: block; height: 1px; margin-bottom: 12px; background: var(--line); }
+footer p { color: var(--mute); margin-bottom: 8px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-bottom: 12px; }
+footer nav a { color: var(--ink); display: inline-flex; align-items: center; min-height: 44px; }
+mark.todo { background: var(--tax); color: var(--on-tax); padding: 0 4px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+    </style>
+</head>
+<body>
+<header class="wrap top">
+    <a class="brand" href="../"><svg class="mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="3.6" rx="1.8" fill="var(--net)"/><rect x="3" y="10.2" width="12" height="3.6" rx="1.8" fill="var(--tax)"/><rect x="17" y="9.2" width="1.8" height="5.6" rx="0.9" fill="var(--tax)"/><rect x="3" y="15.9" width="18" height="3.6" rx="1.8" fill="var(--gross)"/></svg>Taxpad</a>
+    <details class="lang">
+        <summary aria-label="Langue: Français">Français</summary>
+        <ul>
+            <li><a href="../../terms/" hreflang="en" lang="en">English</a></li>
+            <li><a href="../../de/terms/" hreflang="de" lang="de">Deutsch</a></li>
+            <li><a href="./" hreflang="fr" lang="fr" aria-current="page">Français</a></li>
+            <li><a href="../../es/terms/" hreflang="es" lang="es">Español</a></li>
+            <li><a href="../../it/terms/" hreflang="it" lang="it">Italiano</a></li>
+            <li><a href="../../pt-br/terms/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+            <li><a href="../../nl/terms/" hreflang="nl" lang="nl">Nederlands</a></li>
+            <li><a href="../../pl/terms/" hreflang="pl" lang="pl">Polski</a></li>
+            <li><a href="../../ru/terms/" hreflang="ru" lang="ru">Русский</a></li>
+        </ul>
+    </details>
+</header>
+<main class="wrap">
+<article>
+<h1>Conditions d’utilisation</h1>
+<p class="date">Date d’entrée en vigueur : 14 novembre 2026</p>
+<div class="summary"><p><strong>En bref :</strong> votre utilisation de Taxpad est régie par le <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Contrat de licence de l’utilisateur final des applications sous licence</a> standard d’Apple. Les points ci-dessous expliquent comment il s’applique à l’app. À titre informatif uniquement, pas un conseil fiscal. Vérifiez les taux auprès de votre administration fiscale.</p></div>
+<section>
+<h2>1. Licence</h2>
+<p>Taxpad est fourni par Sergei Stasenko et vous est concédé sous le <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Contrat de licence de l’utilisateur final des applications sous licence (CLUF)</a> d’Apple. Nous n’ajoutons aucune condition propre au-delà de ce qu’explique cette page.</p>
+</section>
+<section>
+<h2>2. Utilisation gratuite et déblocage</h2>
+<p>Taxpad est gratuit à télécharger et à utiliser : toute la calculatrice, tous les préréglages, Pourcentage, les widgets, la commande, les raccourcis, les 10 derniers calculs de l’historique et jusqu’à trois taux personnalisés. L’achat facultatif « <strong>Tout débloquer</strong> » est un achat intégré unique et non consommable qui affiche tout l’historique avec son export CSV et vous permet de garder plus de trois taux personnalisés. Ce n’est pas un abonnement et il ne se renouvelle jamais. Les calculs plus anciens ne sont jamais supprimés de l’historique gratuit ; ils restent regroupés jusqu’au déblocage. L’App Store affiche le prix dans votre devise avant l’achat. Vous pouvez restaurer l’achat avec Restaurer les achats sur tout appareil connecté au même compte Apple.</p>
+</section>
+<section>
+<h2>3. Paiement et remboursements</h2>
+<p>Les achats sont traités par Apple selon les conditions de l’App Store. Les remboursements sont gérés par Apple ; vous pouvez en demander un sur <a href="https://reportaproblem.apple.com/">reportaproblem.apple.com</a>.</p>
+</section>
+<section>
+<h2>4. Taux et résultats</h2>
+<p>À titre informatif uniquement, pas un conseil fiscal. Vérifiez les taux auprès de votre administration fiscale. Taxpad calcule des montants uniquement à partir de ce que vous saisissez et du taux que vous choisissez. Les préréglages sont des taux normaux, chacun vérifié auprès de sa source le jour indiqué dans l’app et sur la <a href="../support/#rates">page d’assistance</a> ; les taux changent, les taux réduits et locaux ne sont pas inclus, et les préréglages américains sont des taux de base des États, sans taxes locales. Vérifiez un taux auprès de votre administration fiscale avant de vous y fier. Taxpad est indépendant de toute administration fiscale, ne dépose ni n’envoie rien et ne recherche pas de taux selon la position.</p>
+</section>
+<section>
+<h2>5. Vos données</h2>
+<p>Vos calculs et vos taux vous appartiennent et restent sur votre appareil (voir la <a href="../privacy/">politique de confidentialité</a>). Comme le prévoit le CLUF, l’app est fournie « en l’état ».</p>
+</section>
+<section>
+<h2>6. Contact</h2>
+<p>Questions sur ces conditions : <a href="mailto:ssx51f@gmail.com">ssx51f@gmail.com</a>.</p>
+</section>
+</article>
+</main>
+<footer class="wrap">
+    <nav><a href="../support/">Assistance</a> <a href="../privacy/">Politique de confidentialité</a> <a href="./">Conditions d’utilisation</a></nav>
+    <p>À titre informatif uniquement, pas un conseil fiscal. Vérifiez les taux auprès de votre administration fiscale. Indépendant de toute administration fiscale.</p>
+    <p>&copy; 2026 Sergei Stasenko. Tous droits réservés.</p>
+</footer>
+</body>
+</html>

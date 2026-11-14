@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taxpad-Support · Taxpad</title>
+    <meta name="description" content="Wie die drei Zeilen funktionieren, woher die Sätze stammen, die Tabelle aller Vorlagen mit dem Datum ihrer Prüfung, eigene und kombinierte Sätze, Rabatt und Marge, der kostenlose Verlauf und die Freischaltung, CSV-Export, Widgets und das Löschen von Daten.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F0F0F" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns="http://www.w3.org/2000/svg"%20viewBox="0%200%2024%2024"%3E%3Crect%20width="24"%20height="24"%20rx="5.4"%20fill="%23fff"/%3E%3Crect%20x="3"%20y="4.5"%20width="18"%20height="3.6"%20rx="1.8"%20fill="%231C6E5B"/%3E%3Crect%20x="3"%20y="10.2"%20width="12"%20height="3.6"%20rx="1.8"%20fill="%23B2412F"/%3E%3Crect%20x="17"%20y="9.2"%20width="1.8"%20height="5.6"%20rx="0.9"%20fill="%23B2412F"/%3E%3Crect%20x="3"%20y="15.9"%20width="18"%20height="3.6"%20rx="1.8"%20fill="%23141414"/%3E%3C/svg%3E">
+    <link rel="canonical" href="https://starbuck-dev.github.io/Taxpad/de/support/">
+    <link rel="alternate" hreflang="en" href="https://starbuck-dev.github.io/Taxpad/support/">
+    <link rel="alternate" hreflang="de" href="https://starbuck-dev.github.io/Taxpad/de/support/">
+    <link rel="alternate" hreflang="fr" href="https://starbuck-dev.github.io/Taxpad/fr/support/">
+    <link rel="alternate" hreflang="es" href="https://starbuck-dev.github.io/Taxpad/es/support/">
+    <link rel="alternate" hreflang="it" href="https://starbuck-dev.github.io/Taxpad/it/support/">
+    <link rel="alternate" hreflang="pt-BR" href="https://starbuck-dev.github.io/Taxpad/pt-br/support/">
+    <link rel="alternate" hreflang="nl" href="https://starbuck-dev.github.io/Taxpad/nl/support/">
+    <link rel="alternate" hreflang="pl" href="https://starbuck-dev.github.io/Taxpad/pl/support/">
+    <link rel="alternate" hreflang="ru" href="https://starbuck-dev.github.io/Taxpad/ru/support/">
+    <link rel="alternate" hreflang="x-default" href="https://starbuck-dev.github.io/Taxpad/support/">
+    <style>
+:root {
+    color-scheme: light dark;
+    --bg: #FFFFFF; --card: #F5F5F2; --ink: #141414; --mute: #6E6E68; --line: #E2E2DC; --onbg: #FBF1EF;
+    --net: #1C6E5B; --tax: #B2412F; --gross: #141414; --on-tax: #FFFFFF;
+    --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0F0F0F; --card: #1B1B1B; --ink: #F2F2EE; --mute: #A5A59E; --line: #2C2C2A; --onbg: #2A1A17;
+        --net: #4DB596; --tax: #E8766A; --gross: #F2F2EE; --on-tax: #0F0F0F;
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+    margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 var(--sans);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+::selection { background: var(--onbg); color: var(--ink); }
+a { color: var(--tax); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--tax); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 640px) { .wrap { padding: 0 24px; } }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px;
+    padding-bottom: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--ink);
+    font-weight: 800; font-size: 20px; letter-spacing: -0.01em; text-decoration: none; }
+.mark { flex: none; }
+.lang { position: relative; font-size: 15px; }
+.lang summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; min-height: 44px;
+    padding: 0 14px; border-radius: 999px; background: var(--card); color: var(--ink); white-space: nowrap; }
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: ""; width: 6px; height: 6px; margin: -3px 2px 0 2px; border: solid var(--mute);
+    border-width: 0 1.6px 1.6px 0; transform: rotate(45deg); }
+.lang[open] summary::after { margin-top: 3px; transform: rotate(-135deg); }
+.lang ul { position: absolute; right: 0; z-index: 2; margin: 6px 0 0; padding: 6px; list-style: none;
+    min-width: 200px; background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(20, 20, 20, 0.14); }
+.lang li a { display: block; padding: 9px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.lang li a:hover { background: var(--card); }
+.lang li a[aria-current="page"] { color: var(--tax); font-weight: 600; }
+main { padding-bottom: 24px; }
+h1 { font-size: 34px; line-height: 1.12; font-weight: 800; letter-spacing: -0.02em; margin: 24px 0 12px;
+    text-wrap: balance; }
+h2 { font-size: 24px; line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; margin: 48px 0 12px;
+    text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; font-weight: 600; margin: 0 0 6px; }
+p { margin: 0 0 12px; }
+ul.plain { margin: 0 0 12px; padding-left: 20px; }
+p, li { color: var(--mute); }
+strong { color: var(--ink); font-weight: 600; }
+.display { font-size: 40px; line-height: 1.08; letter-spacing: -0.03em; margin-top: 40px; }
+@media (min-width: 640px) { .display { font-size: 56px; margin-top: 64px; } h1 { font-size: 40px; } }
+em { font-style: normal; color: var(--tax); }
+u { text-decoration: none; color: var(--net); }
+.lead { font-size: 19px; line-height: 1.5; color: var(--mute); max-width: 36em; }
+.date { font-size: 15px; color: var(--mute); margin: 0 0 24px; font-variant-numeric: tabular-nums; }
+.button { display: inline-flex; align-items: center; min-height: 50px; padding: 0 24px; border-radius: 12px;
+    background: var(--tax); color: var(--on-tax); font-weight: 600; text-decoration: none; }
+.button:hover { filter: brightness(1.06); }
+.store { margin: 24px 0 0; color: var(--mute); }
+.sheet { margin: 40px 0 8px; padding: 8px; border-radius: 20px; background: var(--card); }
+.chip { display: inline-block; margin: 8px 8px 12px; padding: 5px 14px; border-radius: 999px;
+    background: var(--tax); color: var(--on-tax); font-size: 15px; font-weight: 600; }
+.line { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 14px 16px 14px 20px; border-radius: 12px; }
+.line + .line { margin-top: 2px; }
+.line::before { content: ""; position: absolute; left: 8px; top: 12px; bottom: 12px; width: 3px; border-radius: 2px;
+    background: var(--role); }
+.line.net { --role: var(--net); }
+.line.tax { --role: var(--tax); background: var(--onbg); }
+.line.gross { --role: var(--gross); }
+.line .role { color: var(--role); font-weight: 600; font-size: 15px; }
+.line .num { color: var(--role); font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums; }
+.caret { display: inline-block; width: 3px; height: 0.9em; margin-left: 3px; vertical-align: -0.05em;
+    border-radius: 2px; background: var(--tax); }
+.sheet figcaption { padding: 10px 12px 4px; font-size: 15px; color: var(--mute); }
+.rows { margin: 40px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.rows li { border-bottom: 1px solid var(--line); }
+.rows a { display: flex; align-items: center; gap: 16px; min-height: 64px; padding: 14px 4px; color: var(--ink);
+    text-decoration: none; }
+.rows a:hover .chev { transform: translateX(2px); }
+.rows strong { display: block; font-size: 17px; }
+.rows span { display: block; color: var(--mute); font-size: 15px; }
+.rows .text { flex: 1; }
+.chev { flex: none; color: var(--mute); transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.contact { margin: 24px 0 8px; padding: 20px; border-radius: 16px; background: var(--card); }
+.contact p { margin-bottom: 16px; }
+.faq h3 { margin-top: 28px; }
+.faq > section + section { border-top: 1px solid var(--line); }
+.faq > section { padding-bottom: 4px; }
+.summary { margin: 0 0 8px; padding: 16px 20px; border-radius: 16px; background: var(--card); }
+.summary p { margin: 0; }
+article h2 { font-size: 20px; margin-top: 36px; }
+.rates-lead { max-width: 40em; }
+.verified { display: inline-block; margin: 4px 0 8px; padding: 6px 12px; border-radius: 8px; background: var(--card);
+    color: var(--ink); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.group { margin: 32px 0 0; }
+.group h3 { font-size: 20px; font-weight: 700; margin: 0; }
+.group .meta { margin: 2px 0 8px; font-size: 15px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; font-variant-numeric: tabular-nums; }
+th, td { padding: 9px 8px 9px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+thead th { padding-top: 0; color: var(--mute); font-size: 13px; font-weight: 600; }
+tbody th { color: var(--ink); font-weight: 500; }
+td { color: var(--mute); }
+td.total, th.total { text-align: right; padding-right: 0; white-space: nowrap; }
+td.total { color: var(--ink); font-weight: 600; }
+.nb { white-space: nowrap; }
+footer { margin-top: 40px; padding-bottom: 48px; font-size: 15px; }
+footer::before { content: ""; display: block; height: 1px; margin-bottom: 12px; background: var(--line); }
+footer p { color: var(--mute); margin-bottom: 8px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-bottom: 12px; }
+footer nav a { color: var(--ink); display: inline-flex; align-items: center; min-height: 44px; }
+mark.todo { background: var(--tax); color: var(--on-tax); padding: 0 4px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+    </style>
+</head>
+<body>
+<header class="wrap top">
+    <a class="brand" href="../"><svg class="mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="3.6" rx="1.8" fill="var(--net)"/><rect x="3" y="10.2" width="12" height="3.6" rx="1.8" fill="var(--tax)"/><rect x="17" y="9.2" width="1.8" height="5.6" rx="0.9" fill="var(--tax)"/><rect x="3" y="15.9" width="18" height="3.6" rx="1.8" fill="var(--gross)"/></svg>Taxpad</a>
+    <details class="lang">
+        <summary aria-label="Sprache: Deutsch">Deutsch</summary>
+        <ul>
+            <li><a href="../../support/" hreflang="en" lang="en">English</a></li>
+            <li><a href="./" hreflang="de" lang="de" aria-current="page">Deutsch</a></li>
+            <li><a href="../../fr/support/" hreflang="fr" lang="fr">Français</a></li>
+            <li><a href="../../es/support/" hreflang="es" lang="es">Español</a></li>
+            <li><a href="../../it/support/" hreflang="it" lang="it">Italiano</a></li>
+            <li><a href="../../pt-br/support/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+            <li><a href="../../nl/support/" hreflang="nl" lang="nl">Nederlands</a></li>
+            <li><a href="../../pl/support/" hreflang="pl" lang="pl">Polski</a></li>
+            <li><a href="../../ru/support/" hreflang="ru" lang="ru">Русский</a></li>
+        </ul>
+    </details>
+</header>
+<main class="wrap">
+<h1>Taxpad-Support</h1>
+<p class="lead">Gib Netto, Steuer oder Brutto ein – die anderen beiden passen sich an.</p>
+<div class="contact">
+<p><strong>Brauchst du Hilfe?</strong> Schreib an <a href="mailto:ssx51f@gmail.com">ssx51f@gmail.com</a>. Sergei Stasenko antwortet meist innerhalb von zwei Werktagen. Einstellungen › Support kontaktieren in der App fügt der E-Mail deine App-Version, iOS-Version, dein Gerät, deine Region und Währung hinzu – das hilft bei Fragen zu einem Satz.</p>
+<a class="button" href="mailto:ssx51f@gmail.com?subject=Taxpad-Support">Support per E-Mail</a>
+</div>
+<div class="faq">
+<h2>Häufige Fragen</h2>
+<section>
+<h3>Wie funktionieren die drei Zeilen?</h3>
+<p>Der Rechner zeigt drei Zeilen: <strong>Netto</strong> (vor Steuer), <strong>Steuer</strong> und <strong>Brutto</strong> (zu zahlen). Tippe auf eine Zeile und gib den Betrag über die Tastatur ein: Diese Zeile ist die Eingabe, die anderen beiden passen sich beim Tippen an. Es gibt keine Taste „Berechnen“ und keinen Schalter für Aufschlagen oder Herausrechnen – um die Steuer aus der Summe eines Kassenbons herauszurechnen, gib die Summe in Brutto ein; um Steuer aufzuschlagen, tippe in Netto; um den Preis aus einem Steuerbetrag zu ermitteln, tippe in Steuer. Tippe auf eine Zahl, um sie zu kopieren, oder nutze Alles kopieren für die drei Zeilen als Text.</p>
+</section>
+<section>
+<h3>Warum ergibt Netto + Steuer immer genau Brutto?</h3>
+<p>Taxpad berechnet zwei der drei Beträge und leitet den dritten aus dem gerundeten Paar ab. Deshalb gehen die Zeilen auf dem Bildschirm immer auf den Cent auf, egal in welche Zeile du tippst. Beträge werden kaufmännisch auf die kleinste Einheit deiner Währung (Cent, Pence) gerundet, und zwar erst bei der Anzeige und beim Eintrag in den Verlauf; unter Einstellungen › Rundung kannst du stattdessen auf ganze Einheiten runden. Bei einem Satz von 0 % nimmt die Steuerzeile keine Eingabe an.</p>
+</section>
+<section>
+<h3>Woher stammen die Sätze?</h3>
+<p>Die Vorlagen sind Regelsätze für die US-Bundesstaaten (Landessätze), die kanadischen Provinzen, das Vereinigte Königreich, Irland, Australien, Neuseeland, die Europäische Union, die Schweiz und Norwegen. Jede Gruppe wurde anhand der genannten Quelle geprüft, an dem Tag, der in <a href="./#rates">der Tabelle unten</a> und im Tab Sätze steht. Beim ersten Start werden die Sätze der Region deines Geräts zu Chips im Rechner. Die Vorlagen sind Teil der App und werden vor jedem Update erneut geprüft – Taxpad lädt nie Sätze herunter –, deshalb öffnet Einstellungen › Sätze › Nach neuen Sätzen sehen diese Tabelle: Hat sich ein Satz nach dem Erscheinen deiner Version geändert, passe ihn unter Sätze an. Deine Änderungen bleiben erhalten, wenn ein Update neue Vorlagen mitbringt.</p><p>Nur zur Information, keine Steuerberatung. Prüfe die Sätze bei deiner Steuerbehörde.</p>
+</section>
+<section>
+<h3>Warum gibt es keine örtlichen US-Sätze nach Postleitzahl?</h3>
+<p>Örtliche Sales-Tax-Sätze in den USA ändern sich hunderte Male im Jahr und unterscheiden sich zwischen benachbarten Straßen – eine Liste in der App wäre also bald falsch. Die US-Vorlagen sind die Landessätze der Bundesstaaten. Füge den Gesamtsatz deiner Stadt als eigenen Satz hinzu (zum Beispiel „Houston 8,25 %“); Taxpad verwendet deinen Standort nicht.</p>
+</section>
+<section>
+<h3>Wie füge ich einen Satz hinzu, ändere ihn oder kombiniere zwei Sätze?</h3>
+<p>Tippe im Tab Sätze auf <strong>+ Eigener</strong> (oder im Rechner auf <strong>+</strong>). Gib dem Satz einen Namen, trage den Satz und bei Bedarf seine Quelle ein und lass <strong>Im Rechner zeigen</strong> eingeschaltet, damit er als Chip erscheint. Ein Satz kann bis zu drei Bestandteile kombinieren, etwa GST 5 % + PST 7 %: Jeder Bestandteil wird vom selben Nettobetrag berechnet, und die Steuerzeile zeigt die Aufteilung. Ändern oder löschen kannst du einen Satz unter Sätze; ziehe die Chips, um ihre Reihenfolge zu ändern. Um einen Satz aus zwei Beträgen zu ermitteln, halte einen Chip gedrückt und wähle <strong>Satz aus Netto und Brutto berechnen</strong>.</p>
+</section>
+<section>
+<h3>In welcher Reihenfolge werden Rabatt und Steuer angewendet?</h3>
+<p>Unter Prozent › Rabatt kommt zuerst der Rabatt, danach wird die Steuer auf den reduzierten Preis erhoben – so, wie die Ladenkasse einen Sonderpreis bucht. Für einen Gutschein, bei dem die Steuer weiterhin auf den Originalpreis anfällt, schalte <strong>Steuer auf den Originalpreis</strong> ein. Der Verlauf zeigt, welche der beiden Varianten eine Berechnung verwendet hat, so werden zwei Rabatte nie verwechselt.</p>
+</section>
+<section>
+<h3>Was ist der Unterschied zwischen Marge und Aufschlag?</h3>
+<p>Prozent › Marge zeigt beides zugleich, aus Einkaufspreis und Verkaufspreis: Die <strong>Marge</strong> ist der Gewinn als Anteil am Verkaufspreis, der <strong>Aufschlag</strong> der Gewinn als Anteil am Einkaufspreis. Ein Einkaufspreis von 80 und ein Verkaufspreis von 100 ergeben 20 % Marge und 25 % Aufschlag. <strong>Zielmarge</strong> ermittelt den Preis für die gewünschte Marge.</p>
+</section>
+<section>
+<h3>Was ist kostenlos, und was bringt die Freischaltung?</h3>
+<p>Dauerhaft kostenlos: der ganze Rechner, alle Vorlagen, Prozent, die Widgets, das Steuerelement im Kontrollzentrum, die Kurzbefehle, die letzten 10 Berechnungen im Verlauf und bis zu drei eigene Sätze (übernommene Vorlagen zählen nicht mit). „<strong>Alles freischalten</strong>“ ist ein einmaliger Kauf, der den ganzen Verlauf mit CSV-Export zeigt und mehr als drei eigene Sätze erlaubt. Gelöscht wird nie etwas: Im kostenlosen Verlauf werden ältere Berechnungen unter einer Zeile zusammengefasst, bis du freischaltest. Es gibt kein Abo und keine Werbung; der App Store zeigt dir den Preis in deiner Währung vor dem Kauf.</p><p>Um den Kauf auf einem neuen iPhone oder iPad wiederherzustellen, melde dich mit demselben Apple Account an und tippe unter Einstellungen › Kauf oder auf dem Freischaltbildschirm auf <strong>Käufe wiederherstellen</strong>.</p>
+</section>
+<section>
+<h3>Wie exportiere oder teile ich den Verlauf?</h3>
+<p>Der Tab Verlauf listet jede Berechnung nach Tagen; tippe auf eine, um sie in den Rechner zurückzuholen, wische, um sie zu löschen. <strong>Als Text teilen</strong> sendet die Zeilen als reinen Text. <strong>CSV exportieren</strong> (auch unter Einstellungen › Daten) erstellt eine Datei für Numbers, Excel oder Google Sheets mit den Spalten Datum, Modus, Satzname, Satz in %, Netto, Steuer, Brutto und Währung. Die Datei ist in UTF-8 mit Zeilenenden CRLF; auf Englisch trennt sie die Felder mit Kommas und schreibt einen Dezimalpunkt, in Sprachen, die Dezimalzahlen mit Komma schreiben (Deutsch, Französisch, Spanisch, Italienisch, Niederländisch, Polnisch, Russisch, Portugiesisch), mit Semikolons und einem Dezimalkomma – so liest die Tabellenkalkulation die Zahlen als Zahlen. Ohne Freischaltung umfasst der Export einen Verlauf von bis zu 10 Berechnungen.</p>
+</section>
+<section>
+<h3>Was machen die Widgets, das Steuerelement und die Kurzbefehle?</h3>
+<p>Das kleine Widget auf dem Home-Bildschirm zeigt einen angehefteten Satz und dein letztes Ergebnis, das Widget auf dem Sperrbildschirm dasselbe; ein Tippen öffnet den Rechner. Das Steuerelement im Kontrollzentrum öffnet den Rechner mit dem Cursor in der Steuerzeile. In der App Kurzbefehle und mit Siri kannst du Steuer aufschlagen, den Preis vor Steuer ermitteln und einen Prozentsatz einer Zahl berechnen, ohne Taxpad zu öffnen.</p>
+</section>
+<section>
+<h3>Wie lösche ich meine Daten?</h3>
+<p>Wische eine Berechnung im Verlauf, um sie zu löschen, oder nutze Einstellungen › Daten › <strong>Alle Berechnungen löschen</strong>; deine Sätze und Einstellungen bleiben erhalten. Eigene Sätze löschst du im Tab Sätze. Wenn du die App löschst, werden alle ihre Daten von deinem Gerät entfernt. Wir haben keine Kopie, denn es wird nie etwas an uns gesendet.</p>
+</section>
+<section>
+<h3>Welche Geräte und Sprachen werden unterstützt?</h3>
+<p>Taxpad läuft auf iPhone und iPad mit iOS 18 oder neuer; in einem breiten iPad-Fenster steht der Verlauf neben dem Rechner. Die App gibt es auf Englisch, Deutsch, Französisch, Spanisch, Italienisch, brasilianischem Portugiesisch, Niederländisch, Polnisch und Russisch. Beträge folgen der Region deines Geräts, die Währung kannst du unter Einstellungen › Währung ändern. Die App funktioniert vollständig offline.</p>
+</section>
+</div>
+<section id="rates">
+<h2>Satzvorlagen</h2>
+<p class="verified">Sätze geprüft am 14. November 2026 · Version 1.0.0</p>
+<div class="rates-lead"><p>Jede Vorlage, die Taxpad mitbringt, nach Gruppen, mit dem Tag der Prüfung und der Quelle der Gruppe. Die Vorlagen sind Regelsätze: Ermäßigte und örtliche Sätze, etwa die von US-Städten und -Countys, gehören nicht dazu – füge sie unter Sätze › + Eigener hinzu. Sätze ändern sich: Weicht ein Satz hier von dem ab, was deine Steuerbehörde veröffentlicht, gilt die Angabe der Steuerbehörde, und du kannst jeden Satz in der App ändern.</p></div>
+<section class="group" id="rates-gb">
+<h3>United Kingdom</h3>
+<p class="meta">geprüft am 14. November 2026 · Quelle <a class="src" href="https://www.gov.uk/vat-rates">gov.uk</a></p>
+<table>
+<thead><tr><th scope="col">Satz</th><th scope="col">Bestandteile</th><th scope="col" class="total">Gesamt</th></tr></thead>
+<tbody>
+<tr><th scope="row">United Kingdom · standard</th><td>VAT</td><td class="total">20 %</td></tr>
+<tr><th scope="row">United Kingdom · reduced</th><td>VAT</td><td class="total">5 %</td></tr>
+<tr><th scope="row">United Kingdom · zero</th><td>VAT</td><td class="total">0 %</td></tr>
+</tbody>
+</table>
+</section>
+<section class="group" id="rates-ie">
+<h3>Ireland</h3>
+<p class="meta">geprüft am 14. November 2026 · Quelle <a class="src" href="https://www.revenue.ie/en/vat/vat-rates/search-vat-rates/current-vat-rates.aspx">revenue.ie</a></p>
+<table>
+<thead><tr><th scope="col">Satz</th><th scope="col">Bestandteile</th><th scope="col" class="total">Gesamt</th></tr></thead>
+<tbody>
+<tr><th scope="row">Ireland · standard</th><td>VAT</td><td class="total">23 %</td></tr>
+</tbody>
+</table>
+</section>
+<section class="group" id="rates-ca">
+<h3>Canada</h3>
+<p class="meta">geprüft am 14. November 2026 · Quelle <a class="src" href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html">canada.ca</a></p>
+<table>
+<thead><tr><th scope="col">Satz</th><th scope="col">Bestandteile</th><th scope="col" class="total">Gesamt</th></tr></thead>
+<tbody>
+<tr><th scope="row">Alberta · GST</th><td>GST</td><td class="total">5 %</td></tr>
+<tr><th scope="row">British Columbia · GST + PST</th><td><span class="nb">GST 5 %</span> + <span class="nb">PST 7 %</span></td><td class="total">12 %</td></tr>
+<tr><th scope="row">Manitoba · GST + RST</th><td><span class="nb">GST 5 %</span> + <span class="nb">RST 7 %</span></td><td class="total">12 %</td></tr>
+<tr><th scope="row">New Brunswick · HST</th><td>HST</td><td class="total">15 %</td></tr>
+<tr><th scope="row">Newfoundland and Labrador · HST</th><td>HST</td><td class="total">15 %</td></tr>
+<tr><th scope="row">Northwest Territories · GST</th><td>GST</td><td class="total">5 %</td></tr>
+<tr><th scope="row">Nova Scotia · HST</th><td>HST</td><td class="total">14 %</td></tr>
+<tr><th scope="row">Nunavut · GST</th><td>GST</td><td class="total">5 %</td></tr>
+<tr><th scope="row">Ontario · HST</th><td>HST</td><td class="total">13 %</td></tr>
+<tr><th scope="row">Prince Edward Island · HST</th><td>HST</td><td class="total">15 %</td></tr>
+<tr><th scope="row">Quebec · GST + QST</th><td><span class="nb">GST 5 %</span> + <span class="nb">QST 9,975 %</span></td><td class="total">14,975 %</td></tr>
+<tr><th scope="row">Saskatchewan · GST + PST</th><td><span class="nb">GST 5 %</span> + <span class="nb">PST 6 %</span></td><td class="total">11 %</td></tr>
+<tr><th scope="row">Yukon · GST</th><td>GST</td><td class="total">5 %</td></tr>
+</tbody>
+</table>
+</section>
+<section class="group" id="rates-us">
+<h3>United States · state base rates</h3>
+<p class="meta">geprüft am 14. November 2026 · Quelle <a class="src" href="https://taxfoundation.org/data/all/state/2026-sales-tax-rates/">taxfoundation.org</a></p>
+<table>
+<thead><tr><th scope="col">Satz</th><th scope="col">Bestandteile</th><th scope="col" class="total">Gesamt</th></tr></thead>
+<tbody>
+<tr><th scope="row">Alabama · state base</th><td>state base</td><td class="total">4 %</td></tr>
+<tr><th scope="row">Alaska · state base</th><td>state base</td><td class="total">0 %</td></tr>
+<tr><th scope="row">Arizona · state base</th><td>state base</td><td class="total">5,6 %</td></tr>
+<tr><th scope="row">Arkansas · state base</th><td>state base</td><td class="total">6,5 %</td></tr>
+<tr><th scope="row">California · state base</th><td>state base</td><td class="total">7,25 %</td></tr>
+<tr><th scope="row">Colorado · state base</th><td>state base</td><td class="total">2,9 %</td></tr>
+<tr><th scope="row">Connecticut · state base</th><td>state base</td><td class="total">6,35 %</td></tr>
+<tr><th scope="row">Delaware · state base</th><td>state base</td><td class="total">0 %</td></tr>
+<tr><th scope="row">District of Columbia · base</th><td>state base</td><td class="total">6 %</td></tr>
+<tr><th scope="row">Florida · state base</th><td>state base</td><td class="total">6 %</td></tr>
+<tr><th scope="row">Georgia · state base</th><td>state base</td><td class="total">4 %</td></tr>
+<tr><th scope="row">Hawaii · state base</th><td>state base</td><td class="total">4 %</td></tr>
+<tr><th scope="row">Idaho · state base</th><td>state base</td><td class="total">6 %</td></tr>
+<tr><th scope="row">Illinois · state base</th><td>state base</td><td class="total">6,25 %</td></tr>
+<tr><th scope="row">Indiana · state base</th><td>state base</td><td class="total">7 %</td></tr>
+<tr><th scope="row">Iowa · state base</th><td>state base</td><td class="total">6 %</td></tr>
+<tr><th scope="row">Kansas · state base</th><td>state base</td><td class="total">6,5 %</td></tr>
+<tr><th scope="row">Kentucky · state base</th><td>state base</td><td class="total">6 %</td></tr>
+<tr><th scope="row">Louisiana · state base</th><td>state base</td><td class="total">5 %</td></tr>
+<tr><th scope="row">Maine · state base</th><td>state base</td><td class="total">5,5 %</td></tr>
+<tr><th scope="row">Maryland · state base</th><td>state base</td><td class="total">6 %</td></tr>
+<tr><th scope="row">Massachusetts · state base</th><td>state base</td><td class="total">6,25 %</td></tr>
+<tr><th scope="row">Michigan · state base</th><td>state base</td><td class="total">6 %</td></tr>
+<tr><th scope="row">Minnesota · state base</th><td>state base</td><td class="total">6,875 %</td></tr>
+<tr><th scope="row">Mississippi · state base</th><td>state base</td><td class="total">7 %</td></tr>
+<tr><th scope="row">Missouri · state base</th><td>state base</td><td class="total">4,225 %</td></tr>
+<tr><th scope="row">Montana · state base</th><td>state base</td><td class="total">0 %</td></tr>
+<tr><th scope="row">Nebraska · state base</th><td>state base</td><td class="total">5,5 %</td></tr>
+<tr><th scope="row">Nevada · state base</th><td>state base</td><td class="total">6,85 %</td></tr>
+<tr><th scope="row">New Hampshire · state base</th><td>state base</td><td class="total">0 %</td></tr>
+<tr><th scope="row">New Jersey · state base</th><td>state base</td><td class="total">6,625 %</td></tr>
+<tr><th scope="row">New Mexico · state base</th><td>state base</td><td class="total">4,875 %</td></tr>
+<tr><th scope="row">New York · state base</th><td>state base</td><td class="total">4 %</td></tr>
+<tr><th scope="row">North Carolina · state base</th><td>state base</td><td class="total">4,75 %</td></tr>
+<tr><th scope="row">North Dakota · state base</th><td>state base</td><td class="total">5 %</td></tr>
+<tr><th scope="row">Ohio · state base</th><td>state base</td><td class="total">5,75 %</td></tr>
+<tr><th scope="row">Oklahoma · state base</th><td>state base</td><td class="total">4,5 %</td></tr>
+<tr><th scope="row">Oregon · state base</th><td>state base</td><td class="total">0 %</td></tr>
+<tr><th scope="row">Pennsylvania · state base</th><td>state base</td><td class="total">6 %</td></tr>
+<tr><th scope="row">Rhode Island · state base</th><td>state base</td><td class="total">7 %</td></tr>
+<tr><th scope="row">South Carolina · state base</th><td>state base</td><td class="total">6 %</td></tr>
+<tr><th scope="row">South Dakota · state base</th><td>state base</td><td class="total">4,2 %</td></tr>
+<tr><th scope="row">Tennessee · state base</th><td>state base</td><td class="total">7 %</td></tr>
+<tr><th scope="row">Texas · state base</th><td>state base</td><td class="total">6,25 %</td></tr>
+<tr><th scope="row">Utah · state base</th><td>state base</td><td class="total">6,1 %</td></tr>
+<tr><th scope="row">Vermont · state base</th><td>state base</td><td class="total">6 %</td></tr>
+<tr><th scope="row">Virginia · state base</th><td>state base</td><td class="total">5,3 %</td></tr>
+<tr><th scope="row">Washington · state base</th><td>state base</td><td class="total">6,5 %</td></tr>
+<tr><th scope="row">West Virginia · state base</th><td>state base</td><td class="total">6 %</td></tr>
+<tr><th scope="row">Wisconsin · state base</th><td>state base</td><td class="total">5 %</td></tr>
+<tr><th scope="row">Wyoming · state base</th><td>state base</td><td class="total">4 %</td></tr>
+</tbody>
+</table>
+</section>
+<section class="group" id="rates-au">
+<h3>Australia</h3>
+<p class="meta">geprüft am 14. November 2026 · Quelle <a class="src" href="https://business.gov.au/registrations/register-for-taxes/register-for-goods-and-services-tax-gst">business.gov.au</a></p>
+<table>
+<thead><tr><th scope="col">Satz</th><th scope="col">Bestandteile</th><th scope="col" class="total">Gesamt</th></tr></thead>
+<tbody>
+<tr><th scope="row">Australia · GST</th><td>GST</td><td class="total">10 %</td></tr>
+</tbody>
+</table>
+</section>
+<section class="group" id="rates-nz">
+<h3>New Zealand</h3>
+<p class="meta">geprüft am 14. November 2026 · Quelle <a class="src" href="https://www.ird.govt.nz/gst">ird.govt.nz</a></p>
+<table>
+<thead><tr><th scope="col">Satz</th><th scope="col">Bestandteile</th><th scope="col" class="total">Gesamt</th></tr></thead>
+<tbody>
+<tr><th scope="row">New Zealand · GST</th><td>GST</td><td class="total">15 %</td></tr>
+</tbody>
+</table>
+</section>
+<section class="group" id="rates-eu">
+<h3>European Union</h3>
+<p class="meta">geprüft am 14. November 2026 · Quelle <a class="src" href="https://taxfoundation.org/data/all/eu/value-added-tax-vat-rates-europe/">taxfoundation.org</a></p>
+<table>
+<thead><tr><th scope="col">Satz</th><th scope="col">Bestandteile</th><th scope="col" class="total">Gesamt</th></tr></thead>
+<tbody>
+<tr><th scope="row">Austria · standard</th><td>USt</td><td class="total">20 %</td></tr>
+<tr><th scope="row">Belgium · standard</th><td>VAT</td><td class="total">21 %</td></tr>
+<tr><th scope="row">Bulgaria · standard</th><td>VAT</td><td class="total">20 %</td></tr>
+<tr><th scope="row">Croatia · standard</th><td>VAT</td><td class="total">25 %</td></tr>
+<tr><th scope="row">Cyprus · standard</th><td>VAT</td><td class="total">19 %</td></tr>
+<tr><th scope="row">Czechia · standard</th><td>VAT</td><td class="total">21 %</td></tr>
+<tr><th scope="row">Denmark · standard</th><td>VAT</td><td class="total">25 %</td></tr>
+<tr><th scope="row">Estonia · standard</th><td>VAT</td><td class="total">24 %</td></tr>
+<tr><th scope="row">Finland · standard</th><td>VAT</td><td class="total">25,5 %</td></tr>
+<tr><th scope="row">France · standard</th><td>TVA</td><td class="total">20 %</td></tr>
+<tr><th scope="row">Germany · standard</th><td>MwSt</td><td class="total">19 %</td></tr>
+<tr><th scope="row">Germany · reduced</th><td>MwSt</td><td class="total">7 %</td></tr>
+<tr><th scope="row">Greece · standard</th><td>VAT</td><td class="total">24 %</td></tr>
+<tr><th scope="row">Hungary · standard</th><td>VAT</td><td class="total">27 %</td></tr>
+<tr><th scope="row">Italy · standard</th><td>IVA</td><td class="total">22 %</td></tr>
+<tr><th scope="row">Latvia · standard</th><td>VAT</td><td class="total">21 %</td></tr>
+<tr><th scope="row">Lithuania · standard</th><td>VAT</td><td class="total">21 %</td></tr>
+<tr><th scope="row">Luxembourg · standard</th><td>TVA</td><td class="total">17 %</td></tr>
+<tr><th scope="row">Malta · standard</th><td>VAT</td><td class="total">18 %</td></tr>
+<tr><th scope="row">Netherlands · standard</th><td>btw</td><td class="total">21 %</td></tr>
+<tr><th scope="row">Poland · standard</th><td>VAT</td><td class="total">23 %</td></tr>
+<tr><th scope="row">Portugal · standard</th><td>IVA</td><td class="total">23 %</td></tr>
+<tr><th scope="row">Romania · standard</th><td>VAT</td><td class="total">21 %</td></tr>
+<tr><th scope="row">Slovakia · standard</th><td>VAT</td><td class="total">23 %</td></tr>
+<tr><th scope="row">Slovenia · standard</th><td>VAT</td><td class="total">22 %</td></tr>
+<tr><th scope="row">Spain · standard</th><td>IVA</td><td class="total">21 %</td></tr>
+<tr><th scope="row">Sweden · standard</th><td>VAT</td><td class="total">25 %</td></tr>
+</tbody>
+</table>
+</section>
+<section class="group" id="rates-ch">
+<h3>Switzerland</h3>
+<p class="meta">geprüft am 14. November 2026 · Quelle <a class="src" href="https://www.estv.admin.ch/estv/en/home/value-added-tax/vat-rates-switzerland.html">estv.admin.ch</a></p>
+<table>
+<thead><tr><th scope="col">Satz</th><th scope="col">Bestandteile</th><th scope="col" class="total">Gesamt</th></tr></thead>
+<tbody>
+<tr><th scope="row">Switzerland · standard</th><td>VAT</td><td class="total">8,1 %</td></tr>
+</tbody>
+</table>
+</section>
+<section class="group" id="rates-no">
+<h3>Norway</h3>
+<p class="meta">geprüft am 14. November 2026 · Quelle <a class="src" href="https://www.skatteetaten.no/en/rates/value-added-tax/">skatteetaten.no</a></p>
+<table>
+<thead><tr><th scope="col">Satz</th><th scope="col">Bestandteile</th><th scope="col" class="total">Gesamt</th></tr></thead>
+<tbody>
+<tr><th scope="row">Norway · standard</th><td>VAT</td><td class="total">25 %</td></tr>
+</tbody>
+</table>
+</section>
+</section>
+</main>
+<footer class="wrap">
+    <nav><a href="./">Support</a> <a href="../privacy/">Datenschutzerklärung</a> <a href="../terms/">Nutzungsbedingungen</a></nav>
+    <p>Nur zur Information, keine Steuerberatung. Prüfe die Sätze bei deiner Steuerbehörde. Mit keiner Steuerbehörde verbunden.</p>
+    <p>&copy; 2026 Sergei Stasenko. Alle Rechte vorbehalten.</p>
+</footer>
+</body>
+</html>

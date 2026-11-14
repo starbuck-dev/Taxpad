@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taxpad · Rekenmachine voor btw, sales tax en GST</title>
+    <meta name="description" content="Taxpad is een rekenmachine voor btw, sales tax en GST voor iPhone en iPad: typ het bedrag excl. btw, de btw of het totaal en de andere twee volgen. Support, voorinstellingen voor tarieven, privacybeleid en gebruiksvoorwaarden.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F0F0F" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns="http://www.w3.org/2000/svg"%20viewBox="0%200%2024%2024"%3E%3Crect%20width="24"%20height="24"%20rx="5.4"%20fill="%23fff"/%3E%3Crect%20x="3"%20y="4.5"%20width="18"%20height="3.6"%20rx="1.8"%20fill="%231C6E5B"/%3E%3Crect%20x="3"%20y="10.2"%20width="12"%20height="3.6"%20rx="1.8"%20fill="%23B2412F"/%3E%3Crect%20x="17"%20y="9.2"%20width="1.8"%20height="5.6"%20rx="0.9"%20fill="%23B2412F"/%3E%3Crect%20x="3"%20y="15.9"%20width="18"%20height="3.6"%20rx="1.8"%20fill="%23141414"/%3E%3C/svg%3E">
+    <link rel="canonical" href="https://starbuck-dev.github.io/Taxpad/nl/">
+    <link rel="alternate" hreflang="en" href="https://starbuck-dev.github.io/Taxpad/">
+    <link rel="alternate" hreflang="de" href="https://starbuck-dev.github.io/Taxpad/de/">
+    <link rel="alternate" hreflang="fr" href="https://starbuck-dev.github.io/Taxpad/fr/">
+    <link rel="alternate" hreflang="es" href="https://starbuck-dev.github.io/Taxpad/es/">
+    <link rel="alternate" hreflang="it" href="https://starbuck-dev.github.io/Taxpad/it/">
+    <link rel="alternate" hreflang="pt-BR" href="https://starbuck-dev.github.io/Taxpad/pt-br/">
+    <link rel="alternate" hreflang="nl" href="https://starbuck-dev.github.io/Taxpad/nl/">
+    <link rel="alternate" hreflang="pl" href="https://starbuck-dev.github.io/Taxpad/pl/">
+    <link rel="alternate" hreflang="ru" href="https://starbuck-dev.github.io/Taxpad/ru/">
+    <link rel="alternate" hreflang="x-default" href="https://starbuck-dev.github.io/Taxpad/">
+    <style>
+:root {
+    color-scheme: light dark;
+    --bg: #FFFFFF; --card: #F5F5F2; --ink: #141414; --mute: #6E6E68; --line: #E2E2DC; --onbg: #FBF1EF;
+    --net: #1C6E5B; --tax: #B2412F; --gross: #141414; --on-tax: #FFFFFF;
+    --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0F0F0F; --card: #1B1B1B; --ink: #F2F2EE; --mute: #A5A59E; --line: #2C2C2A; --onbg: #2A1A17;
+        --net: #4DB596; --tax: #E8766A; --gross: #F2F2EE; --on-tax: #0F0F0F;
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+    margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 var(--sans);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+::selection { background: var(--onbg); color: var(--ink); }
+a { color: var(--tax); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--tax); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 640px) { .wrap { padding: 0 24px; } }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px;
+    padding-bottom: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--ink);
+    font-weight: 800; font-size: 20px; letter-spacing: -0.01em; text-decoration: none; }
+.mark { flex: none; }
+.lang { position: relative; font-size: 15px; }
+.lang summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; min-height: 44px;
+    padding: 0 14px; border-radius: 999px; background: var(--card); color: var(--ink); white-space: nowrap; }
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: ""; width: 6px; height: 6px; margin: -3px 2px 0 2px; border: solid var(--mute);
+    border-width: 0 1.6px 1.6px 0; transform: rotate(45deg); }
+.lang[open] summary::after { margin-top: 3px; transform: rotate(-135deg); }
+.lang ul { position: absolute; right: 0; z-index: 2; margin: 6px 0 0; padding: 6px; list-style: none;
+    min-width: 200px; background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(20, 20, 20, 0.14); }
+.lang li a { display: block; padding: 9px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.lang li a:hover { background: var(--card); }
+.lang li a[aria-current="page"] { color: var(--tax); font-weight: 600; }
+main { padding-bottom: 24px; }
+h1 { font-size: 34px; line-height: 1.12; font-weight: 800; letter-spacing: -0.02em; margin: 24px 0 12px;
+    text-wrap: balance; }
+h2 { font-size: 24px; line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; margin: 48px 0 12px;
+    text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; font-weight: 600; margin: 0 0 6px; }
+p { margin: 0 0 12px; }
+ul.plain { margin: 0 0 12px; padding-left: 20px; }
+p, li { color: var(--mute); }
+strong { color: var(--ink); font-weight: 600; }
+.display { font-size: 40px; line-height: 1.08; letter-spacing: -0.03em; margin-top: 40px; }
+@media (min-width: 640px) { .display { font-size: 56px; margin-top: 64px; } h1 { font-size: 40px; } }
+em { font-style: normal; color: var(--tax); }
+u { text-decoration: none; color: var(--net); }
+.lead { font-size: 19px; line-height: 1.5; color: var(--mute); max-width: 36em; }
+.date { font-size: 15px; color: var(--mute); margin: 0 0 24px; font-variant-numeric: tabular-nums; }
+.button { display: inline-flex; align-items: center; min-height: 50px; padding: 0 24px; border-radius: 12px;
+    background: var(--tax); color: var(--on-tax); font-weight: 600; text-decoration: none; }
+.button:hover { filter: brightness(1.06); }
+.store { margin: 24px 0 0; color: var(--mute); }
+.sheet { margin: 40px 0 8px; padding: 8px; border-radius: 20px; background: var(--card); }
+.chip { display: inline-block; margin: 8px 8px 12px; padding: 5px 14px; border-radius: 999px;
+    background: var(--tax); color: var(--on-tax); font-size: 15px; font-weight: 600; }
+.line { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 14px 16px 14px 20px; border-radius: 12px; }
+.line + .line { margin-top: 2px; }
+.line::before { content: ""; position: absolute; left: 8px; top: 12px; bottom: 12px; width: 3px; border-radius: 2px;
+    background: var(--role); }
+.line.net { --role: var(--net); }
+.line.tax { --role: var(--tax); background: var(--onbg); }
+.line.gross { --role: var(--gross); }
+.line .role { color: var(--role); font-weight: 600; font-size: 15px; }
+.line .num { color: var(--role); font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums; }
+.caret { display: inline-block; width: 3px; height: 0.9em; margin-left: 3px; vertical-align: -0.05em;
+    border-radius: 2px; background: var(--tax); }
+.sheet figcaption { padding: 10px 12px 4px; font-size: 15px; color: var(--mute); }
+.rows { margin: 40px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.rows li { border-bottom: 1px solid var(--line); }
+.rows a { display: flex; align-items: center; gap: 16px; min-height: 64px; padding: 14px 4px; color: var(--ink);
+    text-decoration: none; }
+.rows a:hover .chev { transform: translateX(2px); }
+.rows strong { display: block; font-size: 17px; }
+.rows span { display: block; color: var(--mute); font-size: 15px; }
+.rows .text { flex: 1; }
+.chev { flex: none; color: var(--mute); transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.contact { margin: 24px 0 8px; padding: 20px; border-radius: 16px; background: var(--card); }
+.contact p { margin-bottom: 16px; }
+.faq h3 { margin-top: 28px; }
+.faq > section + section { border-top: 1px solid var(--line); }
+.faq > section { padding-bottom: 4px; }
+.summary { margin: 0 0 8px; padding: 16px 20px; border-radius: 16px; background: var(--card); }
+.summary p { margin: 0; }
+article h2 { font-size: 20px; margin-top: 36px; }
+.rates-lead { max-width: 40em; }
+.verified { display: inline-block; margin: 4px 0 8px; padding: 6px 12px; border-radius: 8px; background: var(--card);
+    color: var(--ink); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.group { margin: 32px 0 0; }
+.group h3 { font-size: 20px; font-weight: 700; margin: 0; }
+.group .meta { margin: 2px 0 8px; font-size: 15px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; font-variant-numeric: tabular-nums; }
+th, td { padding: 9px 8px 9px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+thead th { padding-top: 0; color: var(--mute); font-size: 13px; font-weight: 600; }
+tbody th { color: var(--ink); font-weight: 500; }
+td { color: var(--mute); }
+td.total, th.total { text-align: right; padding-right: 0; white-space: nowrap; }
+td.total { color: var(--ink); font-weight: 600; }
+.nb { white-space: nowrap; }
+footer { margin-top: 40px; padding-bottom: 48px; font-size: 15px; }
+footer::before { content: ""; display: block; height: 1px; margin-bottom: 12px; background: var(--line); }
+footer p { color: var(--mute); margin-bottom: 8px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-bottom: 12px; }
+footer nav a { color: var(--ink); display: inline-flex; align-items: center; min-height: 44px; }
+mark.todo { background: var(--tax); color: var(--on-tax); padding: 0 4px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+    </style>
+</head>
+<body>
+<header class="wrap top">
+    <a class="brand" href="./"><svg class="mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="3.6" rx="1.8" fill="var(--net)"/><rect x="3" y="10.2" width="12" height="3.6" rx="1.8" fill="var(--tax)"/><rect x="17" y="9.2" width="1.8" height="5.6" rx="0.9" fill="var(--tax)"/><rect x="3" y="15.9" width="18" height="3.6" rx="1.8" fill="var(--gross)"/></svg>Taxpad</a>
+    <details class="lang">
+        <summary aria-label="Taal: Nederlands">Nederlands</summary>
+        <ul>
+            <li><a href="../" hreflang="en" lang="en">English</a></li>
+            <li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li>
+            <li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li>
+            <li><a href="../es/" hreflang="es" lang="es">Español</a></li>
+            <li><a href="../it/" hreflang="it" lang="it">Italiano</a></li>
+            <li><a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+            <li><a href="./" hreflang="nl" lang="nl" aria-current="page">Nederlands</a></li>
+            <li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li>
+            <li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li>
+        </ul>
+    </details>
+</header>
+<main class="wrap">
+<h1 class="display">Typ de <em>btw</em>. Zie de <u>prijs</u>.</h1>
+<p class="lead">Taxpad is een rekenmachine voor btw, sales tax en GST voor iPhone en iPad met drie regels: Excl. btw, Btw en Incl. btw. Typ in een van de drie en de andere twee volgen, en excl. btw + btw = incl. btw tot op de cent. Bij elke voorinstelling staat de dag waarop het tarief is gecontroleerd; procent, korting en marge delen hetzelfde toetsenbord. Geen account, geen advertenties, geen analyse: alles blijft op je apparaat.</p>
+<p class="store"><a class="button" href="https://apps.apple.com/app/id6834421795">Taxpad in de App Store</a></p>
+<figure class="sheet">
+    <span class="chip">21 %</span>
+    <div class="line net"><span class="role">Excl. btw</span><span class="num">100,00</span></div>
+    <div class="line tax"><span class="role">Btw</span><span class="num">21,00<span class="caret"></span></span></div>
+    <div class="line gross"><span class="role">Incl. btw</span><span class="num">121,00</span></div>
+    <figcaption>Hier is de btw-regel de invoer: excl. en incl. btw volgen terwijl je typt.</figcaption>
+</figure>
+<ul class="rows">
+    <li><a href="support/"><span class="text"><strong>Support</strong><span>Vragen, antwoorden en de voorinstellingen met de dag waarop elk tarief is gecontroleerd</span></span><svg class="chev" viewBox="0 0 8 14" width="8" height="14" aria-hidden="true" focusable="false"><path d="M1.5 1.5 6.5 7l-5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="privacy/"><span class="text"><strong>Privacybeleid</strong><span>Taxpad verzamelt geen gegevens</span></span><svg class="chev" viewBox="0 0 8 14" width="8" height="14" aria-hidden="true" focusable="false"><path d="M1.5 1.5 6.5 7l-5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    <li><a href="terms/"><span class="text"><strong>Gebruiksvoorwaarden</strong><span>De standaardlicentie van Apple, de eenmalige ontgrendeling en waar de resultaten voor dienen</span></span><svg class="chev" viewBox="0 0 8 14" width="8" height="14" aria-hidden="true" focusable="false"><path d="M1.5 1.5 6.5 7l-5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+</ul>
+</main>
+<footer class="wrap">
+    <nav><a href="support/">Support</a> <a href="privacy/">Privacybeleid</a> <a href="terms/">Gebruiksvoorwaarden</a></nav>
+    <p>Alleen ter informatie, geen belastingadvies. Controleer de tarieven bij je belastingautoriteit. Niet verbonden aan een belastingautoriteit.</p>
+    <p>&copy; 2026 Sergei Stasenko. Alle rechten voorbehouden.</p>
+</footer>
+</body>
+</html>

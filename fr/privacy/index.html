@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Politique de confidentialité · Taxpad</title>
+    <meta name="description" content="Taxpad ne collecte aucune donnée : ni compte, ni serveur, ni statistiques, ni pistage. Vos calculs et vos taux restent sur votre appareil.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F0F0F" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns="http://www.w3.org/2000/svg"%20viewBox="0%200%2024%2024"%3E%3Crect%20width="24"%20height="24"%20rx="5.4"%20fill="%23fff"/%3E%3Crect%20x="3"%20y="4.5"%20width="18"%20height="3.6"%20rx="1.8"%20fill="%231C6E5B"/%3E%3Crect%20x="3"%20y="10.2"%20width="12"%20height="3.6"%20rx="1.8"%20fill="%23B2412F"/%3E%3Crect%20x="17"%20y="9.2"%20width="1.8"%20height="5.6"%20rx="0.9"%20fill="%23B2412F"/%3E%3Crect%20x="3"%20y="15.9"%20width="18"%20height="3.6"%20rx="1.8"%20fill="%23141414"/%3E%3C/svg%3E">
+    <link rel="canonical" href="https://starbuck-dev.github.io/Taxpad/fr/privacy/">
+    <link rel="alternate" hreflang="en" href="https://starbuck-dev.github.io/Taxpad/privacy/">
+    <link rel="alternate" hreflang="de" href="https://starbuck-dev.github.io/Taxpad/de/privacy/">
+    <link rel="alternate" hreflang="fr" href="https://starbuck-dev.github.io/Taxpad/fr/privacy/">
+    <link rel="alternate" hreflang="es" href="https://starbuck-dev.github.io/Taxpad/es/privacy/">
+    <link rel="alternate" hreflang="it" href="https://starbuck-dev.github.io/Taxpad/it/privacy/">
+    <link rel="alternate" hreflang="pt-BR" href="https://starbuck-dev.github.io/Taxpad/pt-br/privacy/">
+    <link rel="alternate" hreflang="nl" href="https://starbuck-dev.github.io/Taxpad/nl/privacy/">
+    <link rel="alternate" hreflang="pl" href="https://starbuck-dev.github.io/Taxpad/pl/privacy/">
+    <link rel="alternate" hreflang="ru" href="https://starbuck-dev.github.io/Taxpad/ru/privacy/">
+    <link rel="alternate" hreflang="x-default" href="https://starbuck-dev.github.io/Taxpad/privacy/">
+    <style>
+:root {
+    color-scheme: light dark;
+    --bg: #FFFFFF; --card: #F5F5F2; --ink: #141414; --mute: #6E6E68; --line: #E2E2DC; --onbg: #FBF1EF;
+    --net: #1C6E5B; --tax: #B2412F; --gross: #141414; --on-tax: #FFFFFF;
+    --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0F0F0F; --card: #1B1B1B; --ink: #F2F2EE; --mute: #A5A59E; --line: #2C2C2A; --onbg: #2A1A17;
+        --net: #4DB596; --tax: #E8766A; --gross: #F2F2EE; --on-tax: #0F0F0F;
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+    margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 var(--sans);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+::selection { background: var(--onbg); color: var(--ink); }
+a { color: var(--tax); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--tax); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 640px) { .wrap { padding: 0 24px; } }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px;
+    padding-bottom: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--ink);
+    font-weight: 800; font-size: 20px; letter-spacing: -0.01em; text-decoration: none; }
+.mark { flex: none; }
+.lang { position: relative; font-size: 15px; }
+.lang summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; min-height: 44px;
+    padding: 0 14px; border-radius: 999px; background: var(--card); color: var(--ink); white-space: nowrap; }
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: ""; width: 6px; height: 6px; margin: -3px 2px 0 2px; border: solid var(--mute);
+    border-width: 0 1.6px 1.6px 0; transform: rotate(45deg); }
+.lang[open] summary::after { margin-top: 3px; transform: rotate(-135deg); }
+.lang ul { position: absolute; right: 0; z-index: 2; margin: 6px 0 0; padding: 6px; list-style: none;
+    min-width: 200px; background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(20, 20, 20, 0.14); }
+.lang li a { display: block; padding: 9px 12px; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.lang li a:hover { background: var(--card); }
+.lang li a[aria-current="page"] { color: var(--tax); font-weight: 600; }
+main { padding-bottom: 24px; }
+h1 { font-size: 34px; line-height: 1.12; font-weight: 800; letter-spacing: -0.02em; margin: 24px 0 12px;
+    text-wrap: balance; }
+h2 { font-size: 24px; line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; margin: 48px 0 12px;
+    text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; font-weight: 600; margin: 0 0 6px; }
+p { margin: 0 0 12px; }
+ul.plain { margin: 0 0 12px; padding-left: 20px; }
+p, li { color: var(--mute); }
+strong { color: var(--ink); font-weight: 600; }
+.display { font-size: 40px; line-height: 1.08; letter-spacing: -0.03em; margin-top: 40px; }
+@media (min-width: 640px) { .display { font-size: 56px; margin-top: 64px; } h1 { font-size: 40px; } }
+em { font-style: normal; color: var(--tax); }
+u { text-decoration: none; color: var(--net); }
+.lead { font-size: 19px; line-height: 1.5; color: var(--mute); max-width: 36em; }
+.date { font-size: 15px; color: var(--mute); margin: 0 0 24px; font-variant-numeric: tabular-nums; }
+.button { display: inline-flex; align-items: center; min-height: 50px; padding: 0 24px; border-radius: 12px;
+    background: var(--tax); color: var(--on-tax); font-weight: 600; text-decoration: none; }
+.button:hover { filter: brightness(1.06); }
+.store { margin: 24px 0 0; color: var(--mute); }
+.sheet { margin: 40px 0 8px; padding: 8px; border-radius: 20px; background: var(--card); }
+.chip { display: inline-block; margin: 8px 8px 12px; padding: 5px 14px; border-radius: 999px;
+    background: var(--tax); color: var(--on-tax); font-size: 15px; font-weight: 600; }
+.line { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 14px 16px 14px 20px; border-radius: 12px; }
+.line + .line { margin-top: 2px; }
+.line::before { content: ""; position: absolute; left: 8px; top: 12px; bottom: 12px; width: 3px; border-radius: 2px;
+    background: var(--role); }
+.line.net { --role: var(--net); }
+.line.tax { --role: var(--tax); background: var(--onbg); }
+.line.gross { --role: var(--gross); }
+.line .role { color: var(--role); font-weight: 600; font-size: 15px; }
+.line .num { color: var(--role); font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums; }
+.caret { display: inline-block; width: 3px; height: 0.9em; margin-left: 3px; vertical-align: -0.05em;
+    border-radius: 2px; background: var(--tax); }
+.sheet figcaption { padding: 10px 12px 4px; font-size: 15px; color: var(--mute); }
+.rows { margin: 40px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.rows li { border-bottom: 1px solid var(--line); }
+.rows a { display: flex; align-items: center; gap: 16px; min-height: 64px; padding: 14px 4px; color: var(--ink);
+    text-decoration: none; }
+.rows a:hover .chev { transform: translateX(2px); }
+.rows strong { display: block; font-size: 17px; }
+.rows span { display: block; color: var(--mute); font-size: 15px; }
+.rows .text { flex: 1; }
+.chev { flex: none; color: var(--mute); transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.contact { margin: 24px 0 8px; padding: 20px; border-radius: 16px; background: var(--card); }
+.contact p { margin-bottom: 16px; }
+.faq h3 { margin-top: 28px; }
+.faq > section + section { border-top: 1px solid var(--line); }
+.faq > section { padding-bottom: 4px; }
+.summary { margin: 0 0 8px; padding: 16px 20px; border-radius: 16px; background: var(--card); }
+.summary p { margin: 0; }
+article h2 { font-size: 20px; margin-top: 36px; }
+.rates-lead { max-width: 40em; }
+.verified { display: inline-block; margin: 4px 0 8px; padding: 6px 12px; border-radius: 8px; background: var(--card);
+    color: var(--ink); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.group { margin: 32px 0 0; }
+.group h3 { font-size: 20px; font-weight: 700; margin: 0; }
+.group .meta { margin: 2px 0 8px; font-size: 15px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; font-variant-numeric: tabular-nums; }
+th, td { padding: 9px 8px 9px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+thead th { padding-top: 0; color: var(--mute); font-size: 13px; font-weight: 600; }
+tbody th { color: var(--ink); font-weight: 500; }
+td { color: var(--mute); }
+td.total, th.total { text-align: right; padding-right: 0; white-space: nowrap; }
+td.total { color: var(--ink); font-weight: 600; }
+.nb { white-space: nowrap; }
+footer { margin-top: 40px; padding-bottom: 48px; font-size: 15px; }
+footer::before { content: ""; display: block; height: 1px; margin-bottom: 12px; background: var(--line); }
+footer p { color: var(--mute); margin-bottom: 8px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-bottom: 12px; }
+footer nav a { color: var(--ink); display: inline-flex; align-items: center; min-height: 44px; }
+mark.todo { background: var(--tax); color: var(--on-tax); padding: 0 4px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+    </style>
+</head>
+<body>
+<header class="wrap top">
+    <a class="brand" href="../"><svg class="mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="3.6" rx="1.8" fill="var(--net)"/><rect x="3" y="10.2" width="12" height="3.6" rx="1.8" fill="var(--tax)"/><rect x="17" y="9.2" width="1.8" height="5.6" rx="0.9" fill="var(--tax)"/><rect x="3" y="15.9" width="18" height="3.6" rx="1.8" fill="var(--gross)"/></svg>Taxpad</a>
+    <details class="lang">
+        <summary aria-label="Langue: Français">Français</summary>
+        <ul>
+            <li><a href="../../privacy/" hreflang="en" lang="en">English</a></li>
+            <li><a href="../../de/privacy/" hreflang="de" lang="de">Deutsch</a></li>
+            <li><a href="./" hreflang="fr" lang="fr" aria-current="page">Français</a></li>
+            <li><a href="../../es/privacy/" hreflang="es" lang="es">Español</a></li>
+            <li><a href="../../it/privacy/" hreflang="it" lang="it">Italiano</a></li>
+            <li><a href="../../pt-br/privacy/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+            <li><a href="../../nl/privacy/" hreflang="nl" lang="nl">Nederlands</a></li>
+            <li><a href="../../pl/privacy/" hreflang="pl" lang="pl">Polski</a></li>
+            <li><a href="../../ru/privacy/" hreflang="ru" lang="ru">Русский</a></li>
+        </ul>
+    </details>
+</header>
+<main class="wrap">
+<article>
+<h1>Politique de confidentialité</h1>
+<p class="date">Date d’entrée en vigueur : 14 novembre 2026</p>
+<div class="summary"><p><strong>En bref :</strong> Taxpad ne collecte aucune donnée. Il n’y a ni compte, ni serveur à nous, ni statistiques, ni publicité, ni pistage. Vos calculs, vos taux et vos réglages restent sur votre appareil, et ce que vous copiez, partagez ou exportez va uniquement là où vous l’envoyez.</p></div>
+<section>
+<h2>1. Qui sommes-nous</h2>
+<p>Taxpad est une app pour iPhone et iPad proposée par Sergei Stasenko (« nous »).</p>
+</section>
+<section>
+<h2>2. Données que nous ne collectons pas</h2>
+<p>Nous ne collectons, ne recevons ni ne conservons aucune donnée personnelle par l’intermédiaire de l’app. Taxpad n’a ni connexion ni compte, nous n’exploitons aucun serveur pour l’app, et l’app ne contient aucun SDK tiers de statistiques, de rapports de plantage, de publicité ou autre. L’app ne vous suit pas à travers les apps ou les sites web, n’utilise pas l’identifiant publicitaire et ne demande jamais d’autorisation de suivi. Elle ne demande aucune autorisation et n’envoie aucune notification.</p>
+</section>
+<section>
+<h2>3. Vos calculs et vos taux</h2>
+<p>L’historique de vos calculs, vos taux personnalisés, les pastilles que vous épinglez sur Calcul et vos réglages (devise, arrondi) sont enregistrés uniquement sur votre appareil, dans le stockage propre de l’app. Les préréglages de taux font partie de l’app ; Taxpad ne télécharge jamais rien. Nous ne pouvons ni voir, ni lire, ni récupérer aucune de ces données.</p>
+<p>Comme les autres données d’app, celles de Taxpad sont incluses dans les sauvegardes de votre appareil si vous utilisez la sauvegarde iCloud ou sauvegardez sur votre ordinateur. Ces sauvegardes relèvent de votre compte Apple ou de votre ordinateur, et nous n’y avons pas accès. Taxpad ne synchronise pas vos données entre appareils.</p>
+</section>
+<section>
+<h2>4. Widgets, Centre de contrôle et raccourcis</h2>
+<p>Les widgets lisent votre taux épinglé et votre dernier résultat dans un fichier que l’app conserve dans un dossier partagé sur votre appareil ; ce fichier ne quitte jamais l’appareil. La commande du Centre de contrôle ne fait qu’ouvrir l’app. Les raccourcis que vous exécutez dans l’app Raccourcis ou avec Siri calculent leur résultat sur votre appareil ; la façon dont Siri traite ce que vous dites est décrite dans la politique de confidentialité d’Apple.</p>
+</section>
+<section>
+<h2>5. Copie, partage et exports</h2>
+<p>Un nombre n’est copié dans le presse-papiers que lorsque vous le touchez. Lorsque vous partagez l’historique en texte ou exportez un fichier CSV, le texte ou le fichier est créé sur votre appareil et va uniquement là où vous l’envoyez avec la feuille de partage (Mail, Messages, Fichiers, AirDrop ou une autre app). La source d’un préréglage et les pages de ce site ne s’ouvrent dans votre navigateur que lorsque vous les touchez. Ces transferts sont pris en charge par Apple ou par l’app que vous choisissez, pas par nous.</p>
+</section>
+<section>
+<h2>6. Achats</h2>
+<p>L’achat facultatif « <strong>Tout débloquer</strong> » se fait via l’App Store. Apple traite le paiement ; nous ne voyons jamais votre nom, votre compte Apple ni vos coordonnées de paiement. L’app demande seulement à l’App Store si le déblocage a été acheté avec votre compte Apple. Le traitement de ces données par Apple est décrit dans la <a href="https://www.apple.com/legal/privacy/">politique de confidentialité d’Apple</a>.</p>
+</section>
+<section>
+<h2>7. Évaluations</h2>
+<p>Une seule fois, après votre troisième calcul dans l’historique, l’app peut afficher la demande d’évaluation standard d’Apple. Le choix d’évaluer ou non, et la manière, relèvent entièrement d’Apple ; l’app conserve seulement, sur votre appareil, le nombre de calculs effectués et le fait qu’elle a déjà posé la question ou non.</p>
+</section>
+<section>
+<h2>8. E-mails à l’assistance</h2>
+<p>Si vous nous écrivez, nous recevons votre adresse e-mail et ce que vous envoyez, y compris la version de l’app, la version d’iOS, l’appareil, la région et la devise que l’e-mail d’assistance de l’app ajoute. Nous utilisons ces informations uniquement pour vous répondre, ne les partageons pas et les supprimons lorsqu’elles ne sont plus nécessaires à votre demande. La base juridique est l’article 6, paragraphe 1, points b) et f), du RGPD.</p>
+</section>
+<section>
+<h2>9. Supprimer vos données</h2>
+<p>Vous pouvez supprimer des calculs un par un, tout l’historique avec Réglages › Données › Supprimer tous les calculs, et vos taux personnalisés dans l’onglet Taux. Supprimer l’app efface toutes ses données de votre appareil. Comme nous ne détenons aucune donnée vous concernant, nous n’avons rien à exporter ni à supprimer sur demande, hormis les e-mails que vous nous avez envoyés.</p>
+</section>
+<section>
+<h2>10. Enfants</h2>
+<p>Taxpad convient à tous les âges et ne collecte de données auprès de personne, enfants compris.</p>
+</section>
+<section>
+<h2>11. Vos droits</h2>
+<p>En vertu du RGPD et de lois similaires, vous avez le droit d’accéder aux données personnelles vous concernant, de les faire rectifier et supprimer, ainsi que d’introduire une réclamation auprès d’une autorité de protection des données. L’app ne collectant aucune donnée, ces droits ne concernent que les e-mails que vous nous avez envoyés ; écrivez à <a href="mailto:ssx51f@gmail.com">ssx51f@gmail.com</a>.</p>
+</section>
+<section>
+<h2>12. Modifications</h2>
+<p>Si cette politique change, la nouvelle version est publiée sur cette page avec une nouvelle date d’entrée en vigueur. Si l’app devait un jour collecter des données, la politique l’indiquerait avant la sortie de cette version.</p>
+</section>
+<section>
+<h2>13. Contact</h2>
+<p>Pour toute question sur cette politique de confidentialité, écrivez à <a href="mailto:ssx51f@gmail.com">ssx51f@gmail.com</a>.</p>
+</section>
+</article>
+</main>
+<footer class="wrap">
+    <nav><a href="../support/">Assistance</a> <a href="./">Politique de confidentialité</a> <a href="../terms/">Conditions d’utilisation</a></nav>
+    <p>À titre informatif uniquement, pas un conseil fiscal. Vérifiez les taux auprès de votre administration fiscale. Indépendant de toute administration fiscale.</p>
+    <p>&copy; 2026 Sergei Stasenko. Tous droits réservés.</p>
+</footer>
+</body>
+</html>
